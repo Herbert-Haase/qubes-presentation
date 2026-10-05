@@ -1,0 +1,157 @@
+/* style.css — Place in the root directory of your Slidev project */
+
+:root {
+  /* Qubes OS Security Label Color Palette */
+  --qubes-red: #cc0000;
+  --qubes-orange: #ff8000;
+  --qubes-yellow: #f0c000;
+  --qubes-green: #00aa00;
+  --qubes-blue: #0088cc;
+  --qubes-purple: #8d28a3;
+  --qubes-gray: #666666;
+  --qubes-black: #1e1e1e;
+  --qubes-dom0: #0088cc;
+}
+
+/* Base Theme Adjustments */
+.slidev-layout {
+  background-color: #f6f8fa;
+  color: #1f2328;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+h1, h2, h3 {
+  color: #1f2328;
+  font-weight: 700;
+}
+
+code, pre {
+  font-family: 'Fira Code', 'JetBrains Mono', monospace;
+}
+
+/* Qubes Window Frame Emulation */
+.qube-frame {
+  position: relative;
+  border-style: solid;
+  border-width: 26px 3px 3px 3px;
+  border-radius: 4px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.qube-frame::before {
+  content: '[' attr(data-qube) ']';
+  position: absolute;
+  top: -22px;
+  left: 8px;
+  font-family: monospace;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: #ffffff;
+  letter-spacing: 0.05em;
+}
+
+/* Domain Trust Color Classes */
+.qube-red { border-color: var(--qubes-red) !important; }
+.qube-yellow { border-color: var(--qubes-yellow) !important; }
+.qube-green { border-color: var(--qubes-green) !important; }
+.qube-blue { border-color: var(--qubes-blue) !important; }
+.qube-purple { border-color: var(--qubes-purple) !important; }
+.qube-black { border-color: var(--qubes-black) !important; }
+
+/* Inline Qube Label Badges */
+.qube-label {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  font-family: monospace;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border-radius: 2px;
+  color: #ffffff;
+}
+
+.qube-label.red { background-color: var(--qubes-red); }
+.qube-label.yellow { background-color: var(--qubes-yellow); color: #000000; }
+.qube-label.green { background-color: var(--qubes-green); }
+.qube-label.blue { background-color: var(--qubes-blue); }
+.qube-label.purple { background-color: var(--qubes-purple); }
+.qube-label.black { background-color: var(--qubes-black); border: 1px solid #444; }
+
+/* Slide-specific components */
+.iframe-wrapper {
+  width: 100%;
+  height: 450px;
+  border: 3px solid var(--qubes-blue);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.iframe-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.architecture-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+
+/* Cover slide: one white surface, no padding */
+.slidev-layout.cover {
+  background-color: #ffffff;
+  padding: 0;
+  position: relative;
+}
+
+.title-slide-wrapper {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.title-logo-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 85%;          /* scale by height, width follows the aspect ratio */
+  width: auto;
+  max-width: 90%;
+  object-fit: contain;
+  opacity: 0.34;        /* faint enough that the text stays readable */
+  pointer-events: none;
+  z-index: 0;
+}
+
+.title-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+}
+
+.title-content h1 {
+  font-size: 3.75rem !important;
+  font-weight: 800 !important;
+  color: #0f2a43 !important;      /* dark navy */
+  letter-spacing: -0.025em;
+  margin-bottom: 0.5rem !important;
+  text-shadow: none;
+}
+
+.title-content p {
+  font-size: 1.25rem;
+  color: #006ba3;                 /* darker Qubes blue, readable on white */
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin: 0;
+}
