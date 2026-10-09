@@ -16,8 +16,13 @@
 
 To start the slide show:
 
-- `npm install`
-- `npm run dev`
+```sh
+# Drop into the Nix shell containing bun
+nix develop
+```
+
+- `bun install`
+- `bun run dev`
 - visit <http://localhost:3030>
 - npx slidev slides.md
 
@@ -31,25 +36,6 @@ npx slidev --force
 
 ## nix
 
-In your presentation directory, create a shell.nix file to declare the Node.js dependency without polluting your global system environment:
-
-```nix
-{ pkgs ? import <nixpkgs> {} }:
-
-pkgs.mkShell {
-  packages = [
-    pkgs.nodejs_22
-  ];
-}
-```
-
-```sh
-# Drop into the Nix shell containing Node.js
-nix-shell
-
-# Run Slidev directly via npx without global installation
-npx slidev@latest
-```
 
 Alternatively, run an ad-hoc shell without creating a shell.nix file:
 
